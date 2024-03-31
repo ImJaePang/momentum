@@ -8,61 +8,26 @@
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- <script type="text/babel"></script> -->
-
 
     <script type="text/babel">
         const root = document.getElementById("root");
-        const Title = () => (
-            <h3
-                id="title"
-                onMouseEnter={() => console.log("mouse enter")}>
-                Hello I'm span
-            </h3>
-        );
-
-        const Button = () => (
-            <button
-                style={{backgroundColor : "tomato"}}
-                onClick={() => console.log("i'm clicked")}
-            >
-                Click me
-            </button>
-        );
+        let counter = 0;
+        function countUp() {
+            counter = counter + 1;
+            render();
+        }
+        
+        function render() {
+            ReactDOM.render(<Container/>, root);
+        }
 
         const Container = () => (
             <div>
-                <title>react exercise</title>
-                <Title/>
-                <Button/>
+                <h3>Total clicks : {counter}</h3>
+                <button onClick={countUp}>Click me</button>
             </div>
         );
         
-
-
-        
-/*         
-        const h3 = React.createElement(
-            "h3"
-            , {onMouseEnter: () => console.log('mouse enter')}
-            , "Hello I'm span"
-        );
- */
-/* 
-        const btn = React.createElement("button"
-        ,{
-            onClick: () => console.log("i'm clicked"),
-            style : {
-                backgroundColor : "tomato"
-            }
-        }
-        ,"Click me");
- */
-/* 
-        const container = React.createElement("div", 
-        null, [Title, Button]);
- */
-        ReactDOM.render(<Container/>, root);
-        // ReactDOM.render(span, root);
+        render();
     </script>
 </html>
